@@ -1,4 +1,22 @@
 
+global.key_up = vk_up;
+global.key_right = vk_right;
+global.key_down = vk_down;
+global.key_left= vk_left;
+
+
+
+if(hasControl){
+
+	if(keyboard_check(global.key_up)) scr_movement(directions.up);
+	if(keyboard_check(global.key_right)) scr_movement(directions.right);
+	if(keyboard_check(global.key_down)) scr_movement(directions.down);
+	if(keyboard_check(global.key_left)) scr_movement(directions.left);
+
+}
+
+
+
 if(state == states.moving){
 
 	walk_anim_time += 1/game_get_speed(gamespeed_fps);
@@ -17,3 +35,4 @@ if(state == states.moving){
 	x = _x* tile_width;
 	y = _y * tile_height;
 }
+
