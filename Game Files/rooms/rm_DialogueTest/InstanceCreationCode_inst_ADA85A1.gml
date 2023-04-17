@@ -1,0 +1,1 @@
+textID = "npc2";

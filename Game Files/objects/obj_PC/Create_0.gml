@@ -4,6 +4,7 @@ enum states {
 
 	idle,
 	moving
+	//add in different states for minigames like kickball(easy), swingset(hard), patty cake(medium)
 
 }
 
@@ -29,6 +30,8 @@ walk_anim_time = 0;
 //saves the tile layer barrier to be used for collision in the movement script
 var tile_layer = layer_get_id("tl_barrier");
 tile_map = layer_tilemap_get_id(tile_layer);
+
+
 
 //determines whether the player is able to have control
 hasControl = true;

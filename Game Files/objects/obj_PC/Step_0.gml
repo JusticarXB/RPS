@@ -36,3 +36,6 @@ if(state == states.moving){
 	y = _y * tile_height;
 }
 
+if(instance_exists(obj_textbox)) hasControl = false;
+else hasControl = true;
+

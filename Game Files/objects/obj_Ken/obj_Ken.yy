@@ -1,11 +1,9 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_NPC",
+  "name": "obj_Ken",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"obj_talkBox","path":"objects/obj_talkBox/obj_talkBox.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
@@ -13,7 +11,10 @@
     "name": "NPC",
     "path": "folders/Objects/NPC.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_NPC",
+    "path": "objects/obj_NPC/obj_NPC.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -28,10 +29,10 @@
   "physicsShapePoints": [],
   "physicsStartAwake": true,
   "properties": [],
-  "solid": true,
+  "solid": false,
   "spriteId": {
-    "name": "spr_NPC",
-    "path": "sprites/spr_NPC/spr_NPC.yy",
+    "name": "spr_ken",
+    "path": "sprites/spr_ken/spr_ken.yy",
   },
   "spriteMaskId": null,
   "visible": true,
