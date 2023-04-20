@@ -5,7 +5,8 @@ textboxy = camera_get_view_y(view_camera[0]) + 420;
 
 
 //disabling movement on player
-obj_PC.hasControl = false;
+
+if(instance_exists(obj_OverworldPC)) obj_OverworldPC.hasControl = false;
 
 if(!setup){
 
@@ -98,14 +99,37 @@ if(!setup){
 	
 	
 //typing the text
-if(draw_char < textLength[page]){
+if(textPauseTimer <= 0){
+	if(draw_char < textLength[page]){
 
-	draw_char += textSpeed;
-	draw_char = clamp(draw_char,0, textLength[page]);
+		draw_char += textSpeed;
+		draw_char = clamp(draw_char,0, textLength[page]);
+		var checkChar = string_char_at(text[page], draw_char);
+	
+		if(checkChar == "." || checkChar == "?"){
+	
+			textPauseTimer = textPauseTime;
+			audio_play_sound(snd[page], 8, false);
+	
+		} else{
+		
+			if(snd_count < snd_delay) snd_count++;
+			else{
+			
+				snd_count = 0;
+				audio_play_sound(snd[page], 8, false);
+			
+			}
+		
+		}
 	
 	
+	}
+} else{
+
+	textPauseTimer--;
+
 }
-
 
 //flip through pages
 if(acceptKey){
@@ -155,7 +179,11 @@ textBox_sprH = sprite_get_height(textBox_spr);
 if(speaker_sprite[page] != noone){
 
 	sprite_index = speaker_sprite[page];
+	if(draw_char == textLength[page]){
 	
+		image_index = 0;
+	
+	}
 	//drawing speaker
 	draw_sprite_ext(textBox_spr, textBox_img, portraitXoffset[page], textB_y,4, 3, 0, c_white,1);
 	draw_sprite_ext(sprite_index, image_index, portraitXoffset[page] + border*3, textB_y + border*2, 4,4,0,c_white,1);
@@ -206,7 +234,44 @@ if(draw_char == textLength[page] && page == pageNum -1){
 //drawing text
 for(var c = 0; c < draw_char; c++){
 
-	draw_text(char_x[c,page], char_y[c,page], char[c,page]);
-
+	//floating text effect
+	var float_y = 0;
+	
+	if(float_text[c,page] == true) {
+	
+		float_dir[c,page] += -6;
+		float_y  = dsin(float_dir[c,page]) * float_speed[c,page];
+	
+	}
+	
+	//shake text
+	var _shakeX = 0;
+	var _shakeY = 0;
+	
+	if(shake_text[c,page]){
+	
+		shake_timer[c,page] --;
+		
+		if(shake_timer[c,page] <= 0){
+		
+			shake_timer[c,page] = irandom_range(4,8);
+			shake_dir[c,page] = irandom(360);
+			
+		}
+		
+		if(shake_timer[c,page] <= 2){
+		
+			_shakeX = lengthdir_x(1,shake_dir[c,page]);
+			_shakeY = lengthdir_y(1, shake_dir[c,page]);
+		
+		}
+		
+	
+	
+	}
+	
+	//normal text
+	draw_text_color(char_x[c,page] + _shakeX, char_y[c,page]+ float_y + _shakeY, char[c,page], col_1[c,page],col_2[c,page],col_3[c,page],col_4[c,page],1);
+	 
 }
 

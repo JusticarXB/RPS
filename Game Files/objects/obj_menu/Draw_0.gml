@@ -1,12 +1,11 @@
 
-draw_set_font(fnt_EarlyGameBoy);
+draw_set_font(fnt_KidGames);
 draw_set_valign(fa_top);
 draw_set_halign(fa_left);
 
-for(i = 0; i < optionLen; i++){
-	var c = c_white;
-	if (pos == i) c = c_yellow
+//title card
+draw_set_valign(fa_top);
+draw_set_halign(fa_center);
+draw_text_ext_transformed_color(titleX,titleY, "RULE THE PLAYGROUND SCHOOLYARD", titleSpacing, 500, title_size,title_size,0,title_c1,title_c1,title_c2,title_c2,1);
 
-	draw_text_color(x + op_x ,y + op_y + space * i, option[menuLevel, i], c,c,c,c,1);
-
-}
+	

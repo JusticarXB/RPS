@@ -30,11 +30,18 @@ enum RPS {
 	rock,
 	paper,
 	scissors,
+	boulder,
+	cardboard,
+	hedgeTrimmer,
+	lizards,
+	godzilla,
+	water,
+	fire,
+	wind,
+	nuke,
 	height
 
 
 }
-
-
 
 

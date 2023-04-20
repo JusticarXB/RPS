@@ -42,10 +42,17 @@ textSpeed = 1;
 setup = false;
 
 
+//sound
+snd_delay = 4;
+snd_count = snd_delay;
+
 
 //effects
 scr_set_defaults_for_text();
 lastFreeSpace = 0;
+textPauseTimer = 0;
+textPauseTime = 16;
+
 
 
 

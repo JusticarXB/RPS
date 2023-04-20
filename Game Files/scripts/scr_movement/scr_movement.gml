@@ -1,4 +1,4 @@
-with(obj_PC){
+with(obj_OverworldPC){
 	//setting up values for directions
 	var dir = argument0;
 	//collects the values for the movement directions

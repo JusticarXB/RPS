@@ -1,14 +1,14 @@
-if(instance_exists(obj_PC)){
+if(instance_exists(obj_OverworldPC)){
 
-	if(distance_to_object(obj_PC) > tile_width * 2){
-	
-				if(!place_empty(x-15,y,obj_talkBox)){
+	if(!place_empty(x,y,obj_talkBox)){
+
+		if(distance_to_object(obj_OverworldPC) > tile_width * 2){
 			
-					instance_destroy(other);
-					
-				}	
+			instance_destroy(other);
+				
+		}	
 	
-		}
+	}
 	
 	
 

@@ -1,45 +1,119 @@
 
+global.view_width = camera_get_view_width(view_camera[0]);
+global.view_height = camera_get_view_height(view_camera[0]);
+
+global.key_revert = vk_escape;
 global.key_up = vk_up;
 global.key_right = vk_right;
 global.key_down = vk_down;
 global.key_left= vk_left;
 global.enter = vk_enter;
 
-width = 64;
-height = 104;
+titleX =855;
+titleY =130;
+title_size = 2;
+title_c1 = c_green;
+title_c2 = c_white;
+titleSpacing =50;
 
-op_x = 16;
-op_y = 32;
-space = 24;
+display_set_gui_size(global.view_width, global.view_height);
 
-pos = 0;
-//main menu
-option[0,0] = "Start Game";
-option[0,1] = "Settings";
-option[0,2] = "Quit Game";
-//settings
-option[1,0] = "Display";
-option[1,1] = "Controls";
-option[1,2] = "Audio";
-option[1,3] = "Difficulty";
-option[1,4] = "Back";
-//display
-option[2,0] = "Resolution";
-option[2,1] = "Full Screen";
-//Controls
-option[3,0] = "Up Key";
-option[3,1] = "Right Key";
-option[3,2] = "Down Key";
-option[3,3] = "Left Key";
-option[3,4] = "Back";
-//Audio
-option[4,0] = "Master";
-option[4,1] = "Sound Effects";
-//Difficulty
-option[5,0] = "Enemy Damage";
-option[5,1] = "Enemy AI";
-option[5,2] = "Player Damage";
-option[5,3] = "Player Health";
+enum menu_page{
 
-optionLen = 0;
-menuLevel = 0;
+	main,
+	settings,
+	audio,
+	difficulty,
+	graphics,
+	controls,
+	height
+
+
+}
+
+enum menu_element_type{
+
+	script_runner,
+	page_transfer,
+	slider,
+	shift,
+	toggle,
+	input
+
+}
+
+//creating menu pages
+ds_menu_main = create_menu_page(
+
+	["RESUME", menu_element_type.script_runner, resume_game ],
+	["NEW GAME", menu_element_type.script_runner, new_game()],
+	["LOAD GAME", menu_element_type.script_runner, load_game()],
+	["SETTINGS", menu_element_type.page_transfer, menu_page.settings],
+	["EXIT", menu_element_type.script_runner, exit_game ]
+
+);
+
+ds_settings = create_menu_page(
+
+	["AUDIO", menu_element_type.page_transfer, menu_page.audio],
+	["DIFFICULTY", menu_element_type.page_transfer, menu_page.difficulty],
+	["GRAPHICS", menu_element_type.page_transfer, menu_page.graphics],
+	["CONTROLS", menu_element_type.page_transfer, menu_page.controls],
+	["BACK", menu_element_type.page_transfer, menu_page.main]
+
+);
+
+ds_menu_audio = create_menu_page(
+
+	["MASTER", menu_element_type.slider, change_volume, 1, [0,1]],
+	["SOUNDS", menu_element_type.slider, change_volume, 1, [0,1]],
+	["MUSIC", menu_element_type.slider, change_volume, 1, [0,1]],
+	["BACK", menu_element_type.page_transfer, menu_page.settings]
+
+);
+
+ds_menu_difficulty = create_menu_page(
+
+	["DIFFICULTY", menu_element_type.shift, change_difficulty, 1, ["EASY","MEDIUM","HARD"] ],
+	["PLAYER ASSIST", menu_element_type.shift, change_difficulty, 1, ["A LITTLE","SOME","A LOT"] ],
+	["BACK", menu_element_type.page_transfer, menu_page.settings]
+
+);
+
+ds_menu_graphics = create_menu_page(
+
+	["RESOLUTION", menu_element_type.shift, change_resolution, 3, ["640X340", "1024X576", "1366X768","1920X1080"] ],
+	["WINDOW MODE", menu_element_type.toggle, change_window_mode, 1, ["FULLSCREEN", "WINDOWED"] ],
+	["BACK", menu_element_type.page_transfer, menu_page.settings]
+	
+
+);
+
+ds_menu_Controls = create_menu_page(
+
+	["UP", menu_element_type.input, "KEY_UP", vk_up],
+	["RIGHT", menu_element_type.input, "KEY_RIGHT",vk_right],
+	["LEFT", menu_element_type.input, "KEY_LEFT",vk_left],
+	["DOWN", menu_element_type.input, "KEY_DOWN",vk_down],
+	["BACK", menu_element_type.page_transfer, menu_page.settings]
+);
+
+
+page = 0;
+menu_pages = [ds_menu_main, ds_settings, ds_menu_audio, ds_menu_difficulty, ds_menu_graphics, ds_menu_Controls];
+
+var i = 0, array_len = array_length(menu_pages);
+
+repeat(array_len){
+	menu_option[i] = 0;
+	i++;
+}
+
+inputting = false;
+
+
+//audio Groups
+audio_group_load(AG_Sounds);
+audio_group_load(Ag_Music);
+
+
