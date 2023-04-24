@@ -10,11 +10,11 @@ with(obj_fight){
 	
 	var PCHP_C;
 	
-	var HPTEXT = string(PCHP) + "/" + string(PCMAX);
+	var HPTEXT = string(global.health) + "/" + string(PCMAX);
 	
 	for(i = 1; i < colorArrayLen+1; i++){
 	
-		if(PCHP <= HPSplit*i){
+		if(global.health <= HPSplit*i){
 		
 			PCHP_C = colorArray[i-1];
 			break;
@@ -32,11 +32,11 @@ with(obj_fight){
 	
 	var EMHP_C;
 	
-	var EMHPTEXT = string(EMHP) + "/" + string(EMMAX);
+	var EMHPTEXT = string(global.EmHealth) + "/" + string(EMMAX);
 	
 	for(i = 1; i < colorArrayLen+1; i++){
 	
-		if(EMHP <= EMSplit*i){
+		if(global.EmHealth <= EMSplit*i){
 		
 			EMHP_C = colorArray[i-1];
 			break;

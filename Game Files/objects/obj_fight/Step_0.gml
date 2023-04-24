@@ -1,57 +1,74 @@
 #region Selecting option
 
-if(keyboard_check_pressed(global.key_up) && !chosen){
+
+if(keyboard_check_pressed(global.key_up) && !global.chosen){
 	
 	if(currentStyle -1 < 0 ) currentStyle = styleLength;
 	else currentStyle --;
+	global.styleChange = true;
 	
 }
 
-if(keyboard_check_pressed(global.key_down) && !chosen){
+if(keyboard_check_pressed(global.key_down) && !global.chosen){
+	
+
 
 	if(currentStyle + 1 > styleLength) currentStyle = 0;
 	else currentStyle ++;
-
+	global.styleChange = true;
+	
 }
 
-if(keyboard_check_pressed(global.enter)) chosen = true;
+if(keyboard_check_pressed(global.enter)){ 
+	global.chosen = true;
+	global.EMChosenSelect =  true;
+	}
 
 
 
 #endregion
 
-switch(combatPhase){
+switch(global.combatPhase){
 
 	case fightState.intro:
-		combatPhase = fightState.startTurn;
+		
+		layer_sequence_create("playerSequence",room_width/2,room_height/2,sq_fightIntro);
+		if(!layer_sequence_exists("playerSequence",sq_fightIntro)){
+			global.combatPhase = fightState.startTurn;
+		}
+
 	break;
 	
 	case fightState.startTurn:
-		EmScript = irandom_range(0,2);
-		combatPhase = fightState.wait;	
+	
+		EmScript = global.EMStyles[irandom_range(0,2)];
+		
+		global.combatPhase = fightState.wait;	
+		
 	break;
 	
 	case fightState.wait:
-		combatPhase = fightState.process;
+	
+		global.combatPhase = fightState.process;
 	break;
 	
 	case fightState.process:
-		combatPhase = fightState.checkFinish;
+		global.combatPhase = fightState.checkFinish;
 	break;
 
 	case fightState.checkFinish:
 		
 		
-		if(chosen){
+		if(global.chosen){
 			
+		
+			 PCchosenStyleName = ds_grid_get(fightStyles, 0, global.styleLoadout[currentStyle]);
+			 EMchosenStyleName = ds_grid_get(fightStyles, 0, EmScript);
+			PCStyle = ds_grid_get(fightStyles, 1, global.styleLoadout[currentStyle]);
+			EMStyle = ds_grid_get(fightStyles, 1, EmScript);
 			
-
-			if(dialogBlock){ 
+			scr_createQueuedAttack(PCStyle,EMStyle);
 				
-				dialogBlock = false;
-				chosen = false;
-				combatPhase = fightState.endTurn;
-				}
 		}
 		
 		
@@ -60,10 +77,12 @@ switch(combatPhase){
 	
 	case fightState.endTurn:
 	
-		if(EMHP <= 0) combatPhase = fightState.win;
-		else if(PCHP <= 0) combatPhase = fightState.lose;
-		else if(PCHP <= 0 && EMHP <= 0) combatPhase = fightState.lose;
-		else combatPhase = fightState.startTurn;
+		
+	
+		if(global.EmHealth <= 0) global.combatPhase = fightState.win;
+		else if(global.health <= 0) global.combatPhase = fightState.lose;
+		else if(global.health <= 0 && global.EmHealth <= 0) global.combatPhase = fightState.lose;
+		else global.combatPhase = fightState.startTurn;
 		
 	break;
 	

@@ -8,7 +8,7 @@ textboxy = camera_get_view_y(view_camera[0]) + 420;
 
 if(instance_exists(obj_OverworldPC)) obj_OverworldPC.hasControl = false;
 
-if(!setup){
+if(setup == false){
 
 
 	setup = true;
@@ -27,6 +27,10 @@ if(!setup){
 			//character on the left
 		textXOffset[p] = 80;
 		portraitXoffset[p] = 8;
+	
+	
+	
+	
 	
 		//get the x position of the textbox
 		if(speaker_sprite[p] == noone) textXOffset[p] = 44;

@@ -100,34 +100,6 @@ repeat(ds_height){
 			draw_text_color(rtx + 64,rty, "OFF",c2,c2,c2,c2,1);
 		break;
 		
-		case menu_element_type.input:
-			var current_val = ds_grid[# 3, yy];
-			var string_val;
-			
-			switch(current_val){
-			
-				case vk_up:
-					string_val = "UP KEY";
-				break;
-				case vk_right:
-					string_val = "RIGHT KEY";
-				break;
-				case vk_down:
-					string_val = "DOWN KEY";
-				break;
-				case vk_left:
-					string_val = "LEFT KEY";
-				break;
-				default: 
-					string_val = chr(current_val);
-				break;
-			}
-			
-			c = c_white;
-			if(inputting && yy == menu_option[page]) c = c_green;
-			draw_text_color(rtx,rty,string_upper(string_val),c,c,c,c,1);
-			
-		break;
 	}
 	
 	yy++;

@@ -18,3 +18,15 @@ if(instance_exists(obj_OverworldPC)){
 	}
 
 }
+
+if(global.incomingFight){
+	global.EmHealth = enemyHealth;
+	global.EMStyles = enemystyles;
+	
+	}
+	
+if(global.exitFight){
+
+	create_textBox(loss_textID);
+
+}

@@ -13,11 +13,14 @@
 #endregion
 
 #region health bars
+
 //player health
-draw_healthbar(50,rH-(rH/5),(rW*3)/10,rH-(rH/6),PCHP,c_gray,c_red,c_green,0, true,true);
+var PCHealthBar = (global.health/PCMAX) * 100;
+draw_healthbar(50,rH-(rH/5),(rW*3)/10,rH-(rH/6),PCHealthBar,c_gray,c_red,c_green,0, true,true);
 
 //enemy health
-draw_healthbar(rW-(rW/4), 25, rW-(rW/10), 50, EMHP, c_gray, c_red,c_green,0, true,true);
+var EMHealthBar = (global.EmHealth/EMMAX) * 100;
+draw_healthbar(rW-(rW/4), 25, rW-(rW/10), 50, EMHealthBar, c_gray, c_red,c_green,0, true,true);
 
 scr_healthScaling();
 
@@ -26,11 +29,26 @@ scr_healthScaling();
 #region Fight menu
 
 scr_drawFightOptions();
-//debug 
-draw_text(rW/2,rH/2, currentStyle);
 
-//showing 
-if(chosen) scr_drawEndTurn();
+//debug 
+//draw_text(rW/2,rH/2, currentStyle);
+
+///////////showing attack///////////////
+var textColor = c_white;
+draw_set_halign(fa_left);
+draw_set_valign(fa_top);
+		
+var textFinal = "You used: " + PCchosenStyleName;
+		
+if(global.playerDmg != 0) string_insert(", " + string(global.playerDmg), textFinal, string_length(textFinal) -1);
+		
+draw_text_color(50, 50, textFinal, textColor,textColor,textColor,textColor,1);
+		
+textFinal = "They used: " + EMchosenStyleName;
+		
+if(global.EMDmg != 0) string_insert(", " + string(global.EMDmg), textFinal, string_length(textFinal) -1);
+		
+draw_text_color(50, 75,textFinal , textColor, textColor,textColor,textColor,1);
 #endregion
 
 #endregion

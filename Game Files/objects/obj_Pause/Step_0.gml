@@ -53,16 +53,7 @@ if(inputting){
 				
 			}
 		break;
-		case menu_element_type.input:
-			var kk = keyboard_lastkey;
-			
-			if(kk != vk_enter || kk != vk_escape || kk != vk_space){
-				if(kk != ds_grid[# 3, menu_option[page]]) //audio here
-				ds_grid[# 3, menu_option[page]] = kk;
-				variable_global_set(ds_grid[# 2, menu_option[page]], kk);
-			}
-			
-		break;
+
 		
 	}
 
@@ -94,6 +85,12 @@ if(acceptKey){
 		break;
 		
 		case menu_element_type.shift:
+		
+			if(inputting){
+				script_execute(ds_grid[# 2, menu_option[page]], ds_grid[# 3, menu_option[page]]);
+			}
+		
+			
 		case menu_element_type.slider:
 		case menu_element_type.toggle: 
 		if(inputting){

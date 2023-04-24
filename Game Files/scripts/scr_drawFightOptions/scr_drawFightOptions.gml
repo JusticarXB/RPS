@@ -13,7 +13,7 @@ with(obj_fight){
 		var textc = c_white;	
 		if(currentStyle == i){
 			
-			if(chosen) textc = c_orange;
+			if(global.chosen) textc = c_orange;
 			else textc = c_yellow;
 			
 			

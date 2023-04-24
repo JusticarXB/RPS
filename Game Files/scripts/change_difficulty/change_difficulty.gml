@@ -21,11 +21,17 @@ function change_difficulty(gameChange){
 		
 			case 0:
 			
+				
+			
 			break;
 			case 1:
 			
+				
+			
 			break;
 			case 2:
+			
+				
 			
 			break;
 		
@@ -39,14 +45,20 @@ function change_difficulty(gameChange){
 		
 		case 0:
 		
+			
+		
 		break;
 		
 		case 1:
+		
+			
 		
 		break;
 		
 		
 		case 2:
+		
+			
 		
 		break;
 		

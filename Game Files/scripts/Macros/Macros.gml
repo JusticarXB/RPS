@@ -34,10 +34,10 @@ enum RPS {
 	cardboard,
 	hedgeTrimmer,
 	lizards,
-	godzilla,
 	water,
 	fire,
 	wind,
+	godzilla,
 	nuke,
 	height
 

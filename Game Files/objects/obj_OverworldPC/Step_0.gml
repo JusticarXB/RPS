@@ -1,5 +1,7 @@
 
 if(keyboard_check_pressed(global.key_revert)) global.pause = !global.pause;
+if(global.pause) hasControl = false;
+
 
 if(hasControl){
 
@@ -41,9 +43,9 @@ else{
 	hasControl = true;
 	if(global.incomingFight){ 
 		
-		room = rm_fight
-		hasControl = false;
 		global.incomingFight = false;
-		}
+		layer_sequence_create("sequenceLayer",camera_get_view_x(view_camera[0]) + 640,camera_get_view_y(view_camera[0])+320,sq_fightStart);
+		hasControl = false; 
+	}
 }
 

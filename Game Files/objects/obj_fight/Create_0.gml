@@ -3,27 +3,28 @@ rW = room_width;
 rH = room_height;
 
 
-PCHP = 100;
-PCMAX = PCHP;
+
+PCMAX = global.health;
 
 
-EMHP = 100;
-
-EMMAX = EMHP;
+EMMAX = global.EmHealth;
 
 currentStyle = 0;
 styleLength = array_length(global.styleLoadout) -1;
+global.styleChange = false;
 
-chosen = false;
+global.chosen = false;
+global.EMChosenSelect = false;
+PCchosenStyleName = "";
+EMchosenStyleName = "";
+PCStyle = RPS.rock;
+EMStyle = RPS.rock;
 
-combatPhase = fightState.intro;
 
-/* For when you are implementing 
-playerSequence = layer_sequence_create()
-enemySequence = layer_sequence_create( )
-*/
+global.combatPhase = fightState.intro;
+
+
 if(instance_exists(obj_OverworldPC) ){
-	
 	
 	obj_OverworldPC.visible = false;
 	obj_OverworldPC.hasControl = false;
@@ -62,12 +63,4 @@ lose
 
 }
 
-//enemy Fight Script, random currently but changes with difficulty setting
-EmScript = irandom_range(0,2);
-
-//used to prevent the next turn from starting without pressing enter when in the fight;
-dialogBlock = false;
-damageDealt = false;
-
-playerDmg = 0;
-EMDmg = 0;
+global.exitFight = false;

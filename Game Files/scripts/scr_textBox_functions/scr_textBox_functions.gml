@@ -102,6 +102,18 @@ function scr_text(_text){
 			snd[pageNum] = snd_girlMid;
 			
 		break;
+		case "Ken":
+			speaker_sprite[pageNum] = spr_ken;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_boyMid;
+		break;
+		case "TutorialTimmy":
+			
+			speaker_sprite[pageNum] = spr_tutorialTimmy;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_boyMid;
+			
+		break;
 		
 		}
 	
