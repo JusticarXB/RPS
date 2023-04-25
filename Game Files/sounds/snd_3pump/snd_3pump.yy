@@ -10,7 +10,7 @@
   "bitRate": 128,
   "compression": 0,
   "conversionMode": 0,
-  "duration": 1.416417,
+  "duration": 1.097143,
   "parent": {
     "name": "3pumpSnds",
     "path": "folders/Sounds/fightSnds/3pumpSnds.yy",

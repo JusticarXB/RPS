@@ -5,3 +5,7 @@
 event_inherited();
 
 enemyHealth = 20;
+
+textID = "TutorialTimmy";
+
+loss_textID = "Tim Loss";

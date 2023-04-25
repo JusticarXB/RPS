@@ -6,7 +6,6 @@ rH = room_height;
 
 PCMAX = global.health;
 
-
 EMMAX = global.EmHealth;
 
 currentStyle = 0;
@@ -63,4 +62,4 @@ lose
 
 }
 
-global.exitFight = false;
+

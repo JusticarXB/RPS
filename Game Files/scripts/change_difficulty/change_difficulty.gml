@@ -20,18 +20,18 @@ function change_difficulty(gameChange){
 		switch(gameChange){
 		
 			case 0:
-			
-				
+				global.difficultySelect = 0;
+				global.EmHealthModifier = 1;
 			
 			break;
 			case 1:
-			
-				
+				global.difficultySelect = 1;
+				global.EmHealthModifier = 1.25;
 			
 			break;
 			case 2:
-			
-				
+				global.difficultySelect = 2;
+				global.EmHealthModifier = 1.5;
 			
 			break;
 		
@@ -44,21 +44,21 @@ function change_difficulty(gameChange){
 		switch(gameChange){
 		
 		case 0:
-		
-			
+			global.difficultySelect = 0;
+			global.healthModifier = 1;
 		
 		break;
 		
 		case 1:
-		
-			
+			global.difficultySelect = 1;
+			global.healthModifier = 1.25;
 		
 		break;
 		
 		
 		case 2:
-		
-			
+			global.difficultySelect = 2;
+			global.healthModifier = 1.5;
 		
 		break;
 		

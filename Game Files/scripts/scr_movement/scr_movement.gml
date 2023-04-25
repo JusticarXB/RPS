@@ -28,4 +28,5 @@ with(obj_OverworldPC){
 			state = states.moving;
 		}
 	}
+	
 }

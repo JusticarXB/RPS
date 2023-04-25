@@ -4,4 +4,10 @@
 // Inherit the parent event
 event_inherited();
 
-enemyHealth = 20;
+textID = "Ken";
+
+enemyHealth = 30;
+
+enemystyles = [10,6,1];
+
+loss_textID = "Ken lose";

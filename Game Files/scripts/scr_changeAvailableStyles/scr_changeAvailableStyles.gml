@@ -29,6 +29,7 @@ function scr_changeAvailableStyles(SC){
 				}
 		
 			}
+			global.health +=5;
 		}
 	}
 }

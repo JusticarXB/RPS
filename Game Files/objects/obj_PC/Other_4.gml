@@ -1,7 +1,11 @@
 
 
 
+if(global.exitFight){
 
+	create_textBox(global.loss_textID);
+	global.exitFight =false;
+}
 
 
 /*

@@ -3,20 +3,14 @@
 the numbers in this array correspond to a row in the fight style ds_grid
 */
 global.styleLoadout = [RPS.rock,RPS.paper,RPS.scissors];
-
-//basic inventory should also be set in here
-
-//any of the story progress should also be set in here for when the game is saved
-
-//basic character info is also in here such as
-//name
-//money
-//time
-//health
+global.healthModifier = 1;
+global.EmHealthModifier = 1;
+global.kaijuUnlock = false;
 global.endGame = false;
-
-global.health = 25;
-
+global.exitFight = false;
+global.loss_textID = "";
+global.losses = 0;
+global.health = ceil(25 *global.healthModifier);
 global.damageTaken = 0;
 global.damageGiven = 0;
 

@@ -8,7 +8,8 @@ if(_eventType == "sequence event"){
 	switch(_message){
 	
 		case "Reverse":
-			layer_sequence_xscale(EMSq, -1);
+			
+			if(!PB)layer_sequence_xscale(EMSq, -1);
 		break;
 		
 		//Debugging
@@ -100,7 +101,7 @@ if(_eventType == "sequence event"){
 				layer_sequence_headpos(EMSq, 13);
 				layer_sequence_speedscale(EMSq, -1);
 				PB = true;
-				
+				audio_group_set_gain(AG_Sounds, 0, .25);
 			
 			}
 		
@@ -109,12 +110,12 @@ if(_eventType == "sequence event"){
 		case "StopReverse_IdleEM":
 		
 			if(layer_sequence_exists("enemySequence", EMSq) && PB){
-				
+				layer_sequence_destroy(EMSq);
 				PB = false;
 				global.EMChosenSelect = false;
-				layer_sequence_destroy(EMSq);
+				
 				EMSq = layer_sequence_create("enemySequence", x,y,sq_IdleEM);
-
+				audio_group_set_gain(AG_Sounds, 1, .25);
 			
 			}
 		

@@ -8,6 +8,8 @@ global.key_right = vk_right;
 global.key_down = vk_down;
 global.key_left= vk_left;
 global.enter = vk_enter;
+global.difficultySelect = 0;
+global.music = snd_mainMenu;
 
 titleX =855;
 titleY =130;
@@ -74,8 +76,8 @@ ds_menu_audio = create_menu_page(
 
 ds_menu_difficulty = create_menu_page(
 
-	["DIFFICULTY", menu_element_type.shift, change_difficulty, 1, ["EASY","MEDIUM","HARD"] ],
-	["PLAYER ASSIST", menu_element_type.shift, change_difficulty, 1, ["A LITTLE","SOME","A LOT"] ],
+	["DIFFICULTY", menu_element_type.shift, change_difficulty, global.difficultySelect, ["EASY","MEDIUM","HARD"] ],
+	["PLAYER ASSIST", menu_element_type.shift, change_difficulty, global.difficultySelect, ["A LITTLE","SOME","A LOT"] ],
 	["BACK", menu_element_type.page_transfer, menu_page.settings]
 
 );

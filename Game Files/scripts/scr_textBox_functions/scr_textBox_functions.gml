@@ -114,6 +114,70 @@ function scr_text(_text){
 			snd[pageNum] = snd_boyMid;
 			
 		break;
+		case "Lizard Man":
+		
+			speaker_sprite[pageNum] = spr_lizardMan;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_boyMid;
+		
+		break;
+		
+		case "Trim":
+		
+			speaker_sprite[pageNum] = spr_TrimTanner;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_boyMid;
+		
+		break;
+		
+		case "Boulder":
+		
+			speaker_sprite[pageNum] = spr_bruce;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_boyMid;
+		
+		break;
+		
+		case "Welma":
+		
+			speaker_sprite[pageNum] = spr_welma;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_girlMid;
+		
+		break;
+		
+		case "Carolyn":
+		
+			speaker_sprite[pageNum] = spr_carolyn;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_girlMid;
+		
+		break;
+		
+		case "Fire Frank":
+		
+			speaker_sprite[pageNum] = spr_Franklin;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_boyMid;
+		
+		break;
+		
+		case "Wind Wendy":
+		
+			speaker_sprite[pageNum] = spr_Wendy;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_girlMid;
+		
+		break;
+		
+		case "Prince":
+		
+			speaker_sprite[pageNum] = spr_Prince;
+			textBox_spr = spr_menuBox;
+			snd[pageNum] = snd_boyMid;
+		
+		break;
+		
 		
 		}
 	

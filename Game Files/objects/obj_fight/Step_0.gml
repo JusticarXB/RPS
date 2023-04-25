@@ -88,9 +88,11 @@ switch(global.combatPhase){
 	
 	case fightState.win:
 		room = rm_sandbox;
+		global.exitFight = true;
 	break;
 	
 	case fightState.lose:
-		game_restart();
+		global.losses++;
+		room = rm_sandbox;
 	break;
 }

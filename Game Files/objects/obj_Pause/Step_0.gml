@@ -30,7 +30,7 @@ if(inputting){
 			switch(menu_option[page]){
 				case 0: if(!audio_is_playing(snd_boyMid)) audio_play_sound(snd_boyMid, 7,false,); break;
 				case 1: if(!audio_is_playing(snd_boyMid)) audio_play_sound(snd_boyMid, 5, false);break;
-				case 2: if(!audio_is_playing(snd_)) audio_play_sound(snd_, 6, false); break;
+				case 2: if(!audio_is_playing(snd_fightStart)) audio_play_sound(snd_fightStart, 6, false); break;
 				
 			
 			}

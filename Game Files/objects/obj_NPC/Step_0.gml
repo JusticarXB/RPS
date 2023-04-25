@@ -20,13 +20,10 @@ if(instance_exists(obj_OverworldPC)){
 }
 
 if(global.incomingFight){
-	global.EmHealth = enemyHealth;
+	global.EmHealth = ceil(enemyHealth * global.EmHealthModifier);
 	global.EMStyles = enemystyles;
+	global.loss_textID = loss_textID;
 	
 	}
 	
-if(global.exitFight){
 
-	create_textBox(loss_textID);
-
-}
